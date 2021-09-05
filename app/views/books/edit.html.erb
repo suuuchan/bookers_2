@@ -1,0 +1,39 @@
+<div class="error_explanation">
+      <h3><% if @book.errors.any? %><%= pluralize(@book.errors.count, "error") %> prohibited this teacher from being saved:</h3>
+      <div class = "alert alert-danger">
+        <ul><% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %></ul>
+        </div>
+      <% end %>
+    </div>
+
+<%= form_with model:@book, local:true do |f| %>
+<div class = "row">
+ <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  <h2>Editing Book</h2>
+  <div class = "form">
+   <label for = "inputName">Title</label><br />
+   <%= f.text_field :title, autofocus: true, id:"inputName" %>
+  </div>
+  
+  <div class = "form">
+   <label for = "inputIntroduction">Opinion</label><br />
+   <%= f.text_area :body %>
+  </div>
+  
+  <div class = "form">
+   <%= f.submit "Update Book", class:"btn btn-secondary" %>
+  </div>
+  
+ <% end %> 
+ <div class = "action">
+  <%= link_to "Show",book_path(@book.id) %>
+  <text>|</text>
+  <%= link_to "Back",books_path %>
+ </div>
+ 
+ 
+ 
+ </div>
+</div> 
